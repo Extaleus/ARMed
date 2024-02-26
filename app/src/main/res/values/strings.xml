@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">ARMed</string>
+    <string name="qr">Скан QR кода</string>
+    <string name="map">Карта</string>
+    <string name="exit">Выход</string>
+    <string name="menu">Меню</string>
+    <string name="no">Нет</string>
+    <string name="yes">Да</string>
+
+    <string name="nfc">Скан NFC метки</string>
+    <string name="nfc_turn_on_title">NFC выключено.</string>
+    <string name="nfc_turn_on_desc">Пожалуйста включите NFC в настройках.\nSETTINGS->NFC</string>
+    <string name="nfc_turn_on">NFC выключено.\nПожалуйста включите NFC в настройках.\nSETTINGS->NFC</string>
+    <string name="nfc_not_sup_title">Это устройство не поддерживает NFC.</string>
+    <string name="nfc_not_sup_desc">Попробуйте другое устройство!</string>
+    <string name="nfc_not_sup">Это устройство не поддерживает NFC.\nПопробуйте другое устройство!</string>
+
+    <string name="info">Информация</string>
+    <string name="waitingRoom">Комната ожидания</string>
+    <string name="passageway">Проход</string>
+    <string name="orthoped">Ортопед</string>
+    <string name="orthopedInfo">Ортопед\nФИО\nРасписание</string>
+    <string name="resus">Ресус</string>
+    <string name="intensiveCare">Интенсивная терапия</string>
+    <string name="exitQuestion">Вы действительно хотите выйти?</string>
+
+
+    <string name="point_your_phone_down">Point your phone down at an empty space, and move it around slowly</string>
+    <string name="tap_anywhere_to_add_model">Tap anywhere to add model</string>
+</resources>

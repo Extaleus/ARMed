@@ -1,0 +1,15 @@
+<resources>
+
+    <style name="MyBorderlessButton">
+        <item name="android:textSize">16sp</item>
+        <item name="android:backgroundTint">@color/dark_blue</item>
+        <item name="android:textColor">@color/dark</item>
+    </style>
+
+    <style name="MyAlertDialogStyle" parent="Theme.AppCompat.Light.Dialog">
+        <item name="android:background">@color/dark_blue</item>
+        <item name="android:textColor">@color/dark</item>
+        <item name="buttonBarPositiveButtonStyle">@style/MyBorderlessButton</item>
+        <item name="buttonBarNegativeButtonStyle">@style/MyBorderlessButton</item>
+    </style>
+</resources>
