@@ -35,7 +35,6 @@ import kotlinx.coroutines.launch
 class QRActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        setContentView(R.layout.activity_qr)
         setContent {
             ARSceneViewComposeTheme {
                 // A surface container using the 'background' color from the theme
