@@ -4,6 +4,14 @@
 
     <uses-permission android:name="android.permission.NFC" />
     <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="32" />
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
 
     <application
         android:allowBackup="true"
@@ -15,6 +23,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ARMed"
         tools:targetApi="34">
+        <!--        <activity-->
+        <!--            android:name=".ScannerActivity"-->
+        <!--            android:exported="false" />-->
         <activity
             android:name=".QRActivity"
             android:exported="true" />
@@ -34,6 +45,7 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.nfc.action.NDEF_DISCOVERED" />
+
                 <category android:name="android.intent.category.DEFAULT" />
 
                 <action android:name="android.nfc.action.TAG_DISCOVERED" />
@@ -46,7 +58,6 @@
                 android:name="android.nfc.action.TECH_DISCOVERED"
                 android:resource="@xml/nfc_tech_filter" />
         </activity>
-
         <activity
             android:name=".MapActivity"
             android:exported="false" />
