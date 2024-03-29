@@ -46,7 +46,7 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.7.0")
     implementation("androidx.activity:activity-compose:1.8.2")
 //    implementation("com.google.ar.sceneform.ux:sceneform-ux:1.17.1")
-    platform("androidx.compose:compose-bom:2024.02.02")
+    platform("androidx.compose:compose-bom:2024.03.00")
     implementation("androidx.compose.ui:ui")
     implementation("androidx.compose.ui:ui-graphics")
     implementation("androidx.compose.ui:ui-tooling")
@@ -64,7 +64,7 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.0")
 
 //    implementation project (":samples:common")
-//    implementation("io.github.sceneview:sceneview:2.0.3")
-    implementation("io.github.sceneview:arsceneview:2.0.3")
+    implementation("io.github.sceneview:sceneview:2.1.0")
+    implementation("io.github.sceneview:arsceneview:2.1.0")
     implementation("me.dm7.barcodescanner:zbar:1.9.8")
 }

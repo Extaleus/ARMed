@@ -19,4 +19,7 @@
     <color name="dark_white">#FFF3EB</color>
     <color name="dark_pink">#E0AB9A</color>
     <color name="dark_red">#EF8A84</color>
+
+    <color name="sceneview">#FF6639A6</color>
+    <color name="translucent">#3F000000</color>
 </resources>

@@ -28,7 +28,9 @@
         <!--            android:exported="false" />-->
         <activity
             android:name=".QRActivity"
-            android:exported="true" />
+            android:configChanges="orientation|screenSize"
+            android:exported="true"
+            android:screenOrientation="locked" />
 
         <activity
             android:name=".MainMenuActivity"
