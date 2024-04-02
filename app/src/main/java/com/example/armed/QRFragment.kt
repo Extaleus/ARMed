@@ -1,8 +1,10 @@
 package com.example.armed
 
+import android.content.Intent
 import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.view.View
+import android.widget.ImageButton
 import androidx.fragment.app.Fragment
 import io.github.sceneview.ar.ARSceneView
 import io.github.sceneview.ar.arcore.addAugmentedImage
@@ -13,15 +15,29 @@ import io.github.sceneview.node.ModelNode
 
 class MainFragment : Fragment(R.layout.fragment_q_r) {
 
-    lateinit var sceneView: ARSceneView
+    private lateinit var sceneView: ARSceneView
 
-    val augmentedImageNodes = mutableListOf<AugmentedImageNode>()
+    private val augmentedImageNodes = mutableListOf<AugmentedImageNode>()
 
     // TODO: Restore when
 //    var qrCodeNode: VideoNode? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val btnExitFrag = view.findViewById<ImageButton>(R.id.btnExitFrag)
+//        val btnReset = view.findViewById<Button>(R.id.btnReset)
+
+        btnExitFrag.setOnClickListener {
+            sceneView.session?.pause()
+            sceneView.session?.close()
+            val intent = Intent(requireActivity(), MainMenuActivity::class.java)
+            startActivity(intent)
+        }
+
+//        btnReset.setOnClickListener {
+//
+//        }
 
         sceneView = view.findViewById<ARSceneView>(R.id.sceneView).apply {
             configureSession { session, config ->
@@ -36,7 +52,8 @@ class MainFragment : Fragment(R.layout.fragment_q_r) {
                         .use(BitmapFactory::decodeStream)
                 )
             }
-            onSessionUpdated = { session, frame ->
+
+            onSessionUpdated = { _, frame ->
                 frame.getUpdatedAugmentedImages().forEach { augmentedImage ->
                     if (augmentedImageNodes.none { it.imageName == augmentedImage.name }) {
                         val augmentedImageNode = AugmentedImageNode(engine, augmentedImage).apply {
@@ -44,9 +61,9 @@ class MainFragment : Fragment(R.layout.fragment_q_r) {
                                 "rabbit" -> addChildNode(
                                     ModelNode(
                                         modelInstance = modelLoader.createModelInstance(
-                                            assetFileLocation = "models/rabbit.glb"
+                                            assetFileLocation = "models/cube_dr_house.glb"
                                         ),
-                                        scaleToUnits = 0.1f,
+                                        scaleToUnits = 0.3f,
                                         centerOrigin = Position(0.0f)
                                     )
                                 )
@@ -54,50 +71,17 @@ class MainFragment : Fragment(R.layout.fragment_q_r) {
                                 "cardiologist" -> addChildNode(
                                     ModelNode(
                                         modelInstance = modelLoader.createModelInstance(
-                                            assetFileLocation = "models/damaged_helmet.glb"
+                                            assetFileLocation = "models/cube.glb"
                                         ),
                                         scaleToUnits = 0.1f,
-                                        centerOrigin = Position(0.0f)
+                                        centerOrigin = Position(0.0f),
                                     )
                                 )
-
-//                                "qrcode" -> {}
-//                                 TODO: Wait for VideoNode to come back
-//                                    addChildNode(VideoNode(
-//                                    materialLoader = materialLoader,
-//                                    player = MediaPlayer().apply {
-//                                        setDataSource(
-//                                            requireContext(),
-//                                            Uri.parse("https://sceneview.github.io/assets/videos/ads/ar_camera_app_ad.mp4")
-//                                        )
-//                                        isLooping = true
-//                                        setOnPreparedListener {
-//                                            if (augmentedImage.isTracking) {
-//                                                start()
-//                                            }
-//                                        }
-//                                        prepareAsync()
-//                                    }
-//                                ).also { qrCodeNode ->
-//                                    onTrackingStateChanged = { trackingState ->
-//                                        when (trackingState) {
-//                                            TrackingState.TRACKING -> {
-//                                                if (!qrCodeNode.player.isPlaying) {
-//                                                    qrCodeNode.player.start()
-//                                                }
-//                                            }
-//
-//                                            else -> {
-//                                                if (qrCodeNode.player.isPlaying) {
-//                                                    qrCodeNode.player.pause()
-//                                                }
-//                                            }
-//                                        }
-//                                    }
-//                                })
                             }
                         }
                         clearChildNodes()
+                        environment =
+                            environmentLoader.createHDREnvironment("augmentedimages/environment.hdr")!!
                         addChildNode(augmentedImageNode)
                         augmentedImageNodes += augmentedImageNode
                     }

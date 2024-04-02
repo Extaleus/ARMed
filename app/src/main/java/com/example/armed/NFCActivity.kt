@@ -64,9 +64,13 @@ class NFCActivity : AppCompatActivity() {
         super.onPause()
     }
 
+    override fun onStart() {
+        super.onStart()
+        checkNFC()
+    }
+
     override fun onResume() {
         super.onResume()
-        checkNFC()
         nfcAdapter?.enableForegroundDispatch(
             this, pendingIntent, intentFiltersArray, techListsArray
         )
@@ -102,7 +106,6 @@ class NFCActivity : AppCompatActivity() {
             }
         }
     }
-    //
 
     private fun checkNFC() {
         if (nfcAdapter == null) {

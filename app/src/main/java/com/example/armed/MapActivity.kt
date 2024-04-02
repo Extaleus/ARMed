@@ -1,11 +1,11 @@
 package com.example.armed
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.GestureDetector
 import android.view.MotionEvent
 import android.view.ScaleGestureDetector
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import com.example.armed.databinding.ActivityMapBinding
 
 class MapActivity : AppCompatActivity() {
@@ -25,12 +25,24 @@ class MapActivity : AppCompatActivity() {
         scaleGestureDetector = ScaleGestureDetector(this, ScaleListener())
         gestureDetector = GestureDetector(this, MoveListener())
 
+        bindingClass.btnWard.setOnClickListener { onClickCabinet(R.string.ward) }
+        bindingClass.btnPediatrics.setOnClickListener { onClickCabinet(R.string.pediatrics) }
+        bindingClass.btnLabs.setOnClickListener { onClickCabinet(R.string.labs) }
+//        bindingClass.btnPassageway.setOnClickListener { onClickCabinet(R.string.passageway) }
+        bindingClass.btnObstetrics.setOnClickListener { onClickCabinet(R.string.obstetrics) }
+        bindingClass.btnOperating.setOnClickListener { onClickCabinet(R.string.operating) }
+        bindingClass.btnSurgical.setOnClickListener { onClickCabinet(R.string.surgical) }
+//        bindingClass.btnPassageway1.setOnClickListener { onClickCabinet(R.string.passageway) }
         bindingClass.btnOrthoped.setOnClickListener { onClickCabinet(R.string.orthopedInfo) }
-        bindingClass.btnPassageway.setOnClickListener { onClickCabinet(R.string.passageway) }
         bindingClass.btnWaitingRoom.setOnClickListener { onClickCabinet(R.string.waitingRoom) }
-        bindingClass.btnResus.setOnClickListener { onClickCabinet(R.string.resus) }
-        bindingClass.btnPassageway1.setOnClickListener { onClickCabinet(R.string.passageway) }
+        bindingClass.btnRadiology.setOnClickListener { onClickCabinet(R.string.radiology) }
         bindingClass.btnIntensiveCare.setOnClickListener { onClickCabinet(R.string.intensiveCare) }
+//        bindingClass.btnPassageway2.setOnClickListener { onClickCabinet(R.string.passageway) }
+        bindingClass.btnResus.setOnClickListener { onClickCabinet(R.string.resus) }
+        bindingClass.btnExamin.setOnClickListener { onClickCabinet(R.string.examine) }
+        bindingClass.btnAmbulanceTriage.setOnClickListener { onClickCabinet(R.string.AmbulanceTriage) }
+        bindingClass.btnWalking.setOnClickListener { onClickCabinet(R.string.AmbulanceTriage) }
+
         bindingClass.btnExitCLInfo.setOnClickListener { bindingClass.clInfo.visibility = View.GONE }
         bindingClass.btnExit.setOnClickListener { finish() }
     }

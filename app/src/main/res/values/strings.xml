@@ -6,6 +6,7 @@
     <string name="menu">Меню</string>
     <string name="no">Нет</string>
     <string name="yes">Да</string>
+    <string name="ok">OK</string>
 
     <string name="nfc">Скан NFC метки</string>
     <string name="nfc_turn_on_title">NFC выключено.</string>
@@ -16,17 +17,30 @@
     <string name="nfc_not_sup">Это устройство не поддерживает NFC.\nПопробуйте другое устройство!</string>
 
     <string name="info">Информация</string>
-    <string name="waitingRoom">Комната ожидания</string>
-    <string name="passageway">Проход</string>
-    <string name="orthoped">Ортопед</string>
-    <string name="orthopedInfo">Ортопед\nФИО\nРасписание</string>
-    <string name="resus">Ресус</string>
-    <string name="intensiveCare">Интенсивная терапия</string>
-    <string name="exitQuestion">Вы действительно хотите выйти?</string>
 
+    <string name="waitingRoom">Главный врач</string>
+    <string name="radiology">Рентген кабинет\nВремя для записи: 8:00 – 12:00\nЧасы приема: 12:00 – 17:00</string>
+<!--    <string name="passageway">Проход</string>-->
+    <string name="obstetrics">Гинеколог\nПН – ПТ: 8:00 – 17:00</string>
+    <string name="pediatrics">Педиатр\nПН, СР, ПТ: 8:00 – 14:00\nВТ, ЧТ: 8:00 – 13:00\nСБ: 8:00 – 13:00</string>
+    <string name="labs">Лаборатория\nПН – ПТ: 8:00 – 10:00</string>
+    <string name="ward">Палата</string>
+    <string name="orthoped">Ортопед</string>
+    <string name="orthopedInfo">Ортопед\nПН – ПТ: 8:00 – 17:00</string>
+    <string name="resus">Ресус</string>
+    <string name="examine">Смотровой кабинет\nПН – ПТ: 8:00 – 00:00</string>
+    <string name="surgical">Предоперационная</string>
+    <string name="operating">Операционная</string>
+    <string name="intensiveCare">Интенсивная терапия</string>
+    <string name="AmbulanceTriage">Приемный покой</string>
+
+    <string name="exitQuestion">Вы действительно хотите выйти?</string>
 
     <string name="point_your_phone_down">Point your phone down at an empty space, and move it around slowly</string>
     <string name="tap_anywhere_to_add_model">Tap anywhere to add model</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="qr_alert">Наведите камеру на метку</string>
+
 </resources>
