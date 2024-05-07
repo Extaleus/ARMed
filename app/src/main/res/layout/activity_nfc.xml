@@ -20,15 +20,50 @@
 
     <TextView
         android:id="@+id/tvMessage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/nfc"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="225dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="64dp"
+        android:background="@color/alert_background"
+        android:text=""
         android:textAlignment="center"
-        android:textColor="@color/dark_white"
-        android:textSize="36sp"
+        android:textColor="@color/dark"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvMessageTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:text="@string/nfc_alert1"
+        android:textAlignment="center"
+        android:textColor="@color/dark_white"
+        android:textSize="36sp"
+        app:layout_constraintBottom_toBottomOf="@+id/btnExit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btnExit" />
+
+    <TextView
+        android:id="@+id/tvMessageDecr"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:text="Чтобы просканировать новую метку, приложите к ней телефон"
+        android:textAlignment="center"
+        android:textColor="@color/dark_white"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/tvMessage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvMessageTitle" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

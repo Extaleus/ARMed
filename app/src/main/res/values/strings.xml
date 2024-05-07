@@ -10,8 +10,8 @@
 
     <string name="nfc">Скан NFC метки</string>
     <string name="nfc_turn_on_title">NFC выключено.</string>
-    <string name="nfc_turn_on_desc">Пожалуйста включите NFC в настройках.\nSETTINGS->NFC</string>
-    <string name="nfc_turn_on">NFC выключено.\nПожалуйста включите NFC в настройках.\nSETTINGS->NFC</string>
+    <string name="nfc_turn_on_desc">Пожалуйста включите NFC в настройках.</string>
+    <string name="nfc_turn_on">NFC выключено.\nПожалуйста включите NFC в настройках.</string>
     <string name="nfc_not_sup_title">Это устройство не поддерживает NFC.</string>
     <string name="nfc_not_sup_desc">Попробуйте другое устройство!</string>
     <string name="nfc_not_sup">Это устройство не поддерживает NFC.\nПопробуйте другое устройство!</string>
@@ -42,5 +42,8 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <string name="qr_alert">Наведите камеру на метку</string>
+    <string name="nfc_alert">Поднесите телефон к метке</string>
+    <string name="nfc_alert1">NFC</string>
+    <string name="nfc_alert2">Здесь будет информация считанная с NFC метки</string>
 
 </resources>

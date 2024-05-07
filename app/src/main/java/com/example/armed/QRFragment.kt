@@ -19,14 +19,10 @@ class MainFragment : Fragment(R.layout.fragment_q_r) {
 
     private val augmentedImageNodes = mutableListOf<AugmentedImageNode>()
 
-    // TODO: Restore when
-//    var qrCodeNode: VideoNode? = null
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         val btnExitFrag = view.findViewById<ImageButton>(R.id.btnExitFrag)
-//        val btnReset = view.findViewById<Button>(R.id.btnReset)
 
         btnExitFrag.setOnClickListener {
             sceneView.session?.pause()
@@ -34,10 +30,6 @@ class MainFragment : Fragment(R.layout.fragment_q_r) {
             val intent = Intent(requireActivity(), MainMenuActivity::class.java)
             startActivity(intent)
         }
-
-//        btnReset.setOnClickListener {
-//
-//        }
 
         sceneView = view.findViewById<ARSceneView>(R.id.sceneView).apply {
             configureSession { session, config ->

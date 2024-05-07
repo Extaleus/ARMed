@@ -1,6 +1,7 @@
 package com.example.armed
 
 import android.app.PendingIntent
+import android.content.DialogInterface
 import android.content.Intent
 import android.content.IntentFilter
 import android.nfc.NdefMessage
@@ -32,6 +33,14 @@ class NFCActivity : AppCompatActivity() {
 
         bindingClass.btnExit.setOnClickListener { finish() }
 
+        val builder = AlertDialog.Builder(this@NFCActivity, R.style.MyAlertDialogStyle)
+        builder.setTitle(R.string.nfc_alert1)
+        builder.setMessage(R.string.nfc_alert)
+        builder.setPositiveButton(R.string.ok) { _: DialogInterface, _: Int -> }
+        val myDialog = builder.create()
+        myDialog.setCanceledOnTouchOutside(false)
+        myDialog.show()
+
         try {
             pendingIntent = PendingIntent.getActivity(
                 this,
@@ -49,8 +58,6 @@ class NFCActivity : AppCompatActivity() {
             }
 
             intentFiltersArray = arrayOf(ndef)
-
-//            checkNFC()
 
         } catch (ex: Exception) {
             Toast.makeText(applicationContext, ex.message, Toast.LENGTH_SHORT).show()
@@ -78,7 +85,6 @@ class NFCActivity : AppCompatActivity() {
 
     private var tagMessage = ""
 
-    // stable older method
     override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)
 
@@ -92,7 +98,6 @@ class NFCActivity : AppCompatActivity() {
                 try {
                     val inNdefMessage = this?.get(0) as NdefMessage
                     val inNdefRecords = inNdefMessage.records
-                    //if there are many records, you can call inNdefRecords[1] as array
                     val ndefRecord0 = inNdefRecords[0]
                     val inMessage = String(ndefRecord0.payload)
                     tagMessage = inMessage.drop(3)
@@ -123,14 +128,15 @@ class NFCActivity : AppCompatActivity() {
             builder.setTitle(R.string.nfc_turn_on_title)
             builder.setMessage(R.string.nfc_turn_on_desc)
             builder.setPositiveButton("Настройки") { _, _ -> startActivity(Intent(Settings.ACTION_NFC_SETTINGS)) }
-            builder.setNegativeButton("Отмена", null)
+            builder.setNegativeButton("Отмена") { _, _ -> finish() }
             val myDialog = builder.create()
             myDialog.setCanceledOnTouchOutside(false)
             myDialog.show()
-            bindingClass.tvMessage.text = getString(R.string.nfc_turn_on)
+//            bindingClass.tvMessage.text = getString(R.string.nfc_turn_on)
 
         } else {
-            bindingClass.tvMessage.text = getString(R.string.nfc)
+//            bindingClass.tvMessage.text = getString(R.string.nfc_alert2)
+            bindingClass.tvMessage.text = ""
         }
     }
 }

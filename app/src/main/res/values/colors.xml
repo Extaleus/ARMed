@@ -15,6 +15,7 @@
     <color name="teal_700">#FF018786</color>
 
     <color name="dark">#081012</color>
+    <color name="alert_background">#b8daf5</color>
     <color name="dark_blue">#4D8FC3</color>
     <color name="dark_white">#FFF3EB</color>
     <color name="dark_pink">#E0AB9A</color>

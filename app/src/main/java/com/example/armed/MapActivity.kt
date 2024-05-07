@@ -1,5 +1,6 @@
 package com.example.armed
 
+import android.content.res.Resources
 import android.os.Bundle
 import android.view.GestureDetector
 import android.view.MotionEvent
@@ -28,16 +29,13 @@ class MapActivity : AppCompatActivity() {
         bindingClass.btnWard.setOnClickListener { onClickCabinet(R.string.ward) }
         bindingClass.btnPediatrics.setOnClickListener { onClickCabinet(R.string.pediatrics) }
         bindingClass.btnLabs.setOnClickListener { onClickCabinet(R.string.labs) }
-//        bindingClass.btnPassageway.setOnClickListener { onClickCabinet(R.string.passageway) }
         bindingClass.btnObstetrics.setOnClickListener { onClickCabinet(R.string.obstetrics) }
         bindingClass.btnOperating.setOnClickListener { onClickCabinet(R.string.operating) }
         bindingClass.btnSurgical.setOnClickListener { onClickCabinet(R.string.surgical) }
-//        bindingClass.btnPassageway1.setOnClickListener { onClickCabinet(R.string.passageway) }
         bindingClass.btnOrthoped.setOnClickListener { onClickCabinet(R.string.orthopedInfo) }
         bindingClass.btnWaitingRoom.setOnClickListener { onClickCabinet(R.string.waitingRoom) }
         bindingClass.btnRadiology.setOnClickListener { onClickCabinet(R.string.radiology) }
         bindingClass.btnIntensiveCare.setOnClickListener { onClickCabinet(R.string.intensiveCare) }
-//        bindingClass.btnPassageway2.setOnClickListener { onClickCabinet(R.string.passageway) }
         bindingClass.btnResus.setOnClickListener { onClickCabinet(R.string.resus) }
         bindingClass.btnExamin.setOnClickListener { onClickCabinet(R.string.examine) }
         bindingClass.btnAmbulanceTriage.setOnClickListener { onClickCabinet(R.string.AmbulanceTriage) }
@@ -59,7 +57,7 @@ class MapActivity : AppCompatActivity() {
     inner class ScaleListener : ScaleGestureDetector.SimpleOnScaleGestureListener() {
         override fun onScale(detector: ScaleGestureDetector): Boolean {
             factor *= detector.scaleFactor
-            factor = factor.coerceIn(0.8f, 10.0f)
+            factor = factor.coerceIn(0.8f, 2.5f)
             bindingClass.clMap.scaleX = factor
             bindingClass.clMap.scaleY = factor
             return true
@@ -73,8 +71,30 @@ class MapActivity : AppCompatActivity() {
             distanceX: Float,
             distanceY: Float
         ): Boolean {
-            bindingClass.clMap.x -= distanceX
-            bindingClass.clMap.y -= distanceY
+            val newX = bindingClass.clMap.x - distanceX
+            val newY = bindingClass.clMap.y - distanceY
+
+            // Получаем размеры экрана
+            val displayMetrics = Resources.getSystem().displayMetrics
+            val screenWidth = displayMetrics.widthPixels
+            val screenHeight = displayMetrics.heightPixels
+
+            // Получаем размеры вашего элемента
+            val elementWidth = bindingClass.clMap.width
+            val elementHeight = bindingClass.clMap.height
+
+            // Вычисляем границы, которые элемент может превысить
+            val boundaryX = screenWidth - elementWidth / 4
+            val boundaryY = screenHeight - elementHeight / 4
+
+            // Проверяем, не выходит ли элемент за пределы экрана
+            if (newX >= -elementWidth * 3 / 4 && newX <= boundaryX) {
+                bindingClass.clMap.x = newX
+            }
+            if (newY >= -elementHeight * 3 / 4 && newY <= boundaryY) {
+                bindingClass.clMap.y = newY
+            }
+
             return true
         }
     }

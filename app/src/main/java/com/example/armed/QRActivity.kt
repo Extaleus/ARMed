@@ -11,7 +11,6 @@ class QRActivity : AppCompatActivity(R.layout.activity_qr) {
 
         val builder = AlertDialog.Builder(this@QRActivity, R.style.MyAlertDialogStyle)
         builder.setTitle(R.string.qr_alert)
-//        builder.setMessage(R.string.nfc_not_sup_desc)
         builder.setPositiveButton(R.string.ok) { _, _ ->
             supportFragmentManager.commit {
                 add(R.id.containerFragment, MainFragment::class.java, Bundle())
