@@ -13,8 +13,9 @@ import io.github.sceneview.ar.node.AugmentedImageNode
 import io.github.sceneview.math.Position
 import io.github.sceneview.node.ModelNode
 
-class MainFragment : Fragment(R.layout.fragment_q_r) {
+class MainFragment : Fragment(R.layout.fragment_ar) {
 
+    // Создаем экземпляр класса ARSceneView для настройки и использования AR
     private lateinit var sceneView: ARSceneView
 
     private val augmentedImageNodes = mutableListOf<AugmentedImageNode>()
@@ -24,6 +25,7 @@ class MainFragment : Fragment(R.layout.fragment_q_r) {
 
         val btnExitFrag = view.findViewById<ImageButton>(R.id.btnExitFrag)
 
+        // Обработчик нажатия кнопки "Выход"
         btnExitFrag.setOnClickListener {
             sceneView.session?.pause()
             sceneView.session?.close()
@@ -31,13 +33,14 @@ class MainFragment : Fragment(R.layout.fragment_q_r) {
             startActivity(intent)
         }
 
-        sceneView = view.findViewById<ARSceneView>(R.id.sceneView).apply {
-            configureSession { session, config ->
-                config.addAugmentedImage(
-                    session, "rabbit",
-                    requireContext().assets.open("augmentedimages/rabbit.jpg")
-                        .use(BitmapFactory::decodeStream)
-                )
+// Добавляем изображения в список изображений для обнаружения
+sceneView = view.findViewById<ARSceneView>(R.id.sceneView).apply {
+    configureSession { session, config ->
+        config.addAugmentedImage(
+            session, "rabbit",
+            requireContext().assets.open("augmentedimages/rabbit.jpg")
+                .use(BitmapFactory::decodeStream)
+        )
                 config.addAugmentedImage(
                     session, "cardiologist",
                     requireContext().assets.open("augmentedimages/cardiologist.jpg")
@@ -45,15 +48,17 @@ class MainFragment : Fragment(R.layout.fragment_q_r) {
                 )
             }
 
+            // Поиск метки на изображении камеры
             onSessionUpdated = { _, frame ->
                 frame.getUpdatedAugmentedImages().forEach { augmentedImage ->
                     if (augmentedImageNodes.none { it.imageName == augmentedImage.name }) {
                         val augmentedImageNode = AugmentedImageNode(engine, augmentedImage).apply {
+                            // Добавление 3D модели в сцену
                             when (augmentedImage.name) {
                                 "rabbit" -> addChildNode(
                                     ModelNode(
                                         modelInstance = modelLoader.createModelInstance(
-                                            assetFileLocation = "models/cube_dr_house.glb"
+                                            assetFileLocation = "models/nevrolog_model.glb"
                                         ),
                                         scaleToUnits = 0.3f,
                                         centerOrigin = Position(0.0f)
@@ -63,7 +68,7 @@ class MainFragment : Fragment(R.layout.fragment_q_r) {
                                 "cardiologist" -> addChildNode(
                                     ModelNode(
                                         modelInstance = modelLoader.createModelInstance(
-                                            assetFileLocation = "models/cube.glb"
+                                            assetFileLocation = "models/cadriolog_model.glb"
                                         ),
                                         scaleToUnits = 0.1f,
                                         centerOrigin = Position(0.0f),

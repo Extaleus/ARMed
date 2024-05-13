@@ -27,7 +27,7 @@
         <!--            android:name=".ScannerActivity"-->
         <!--            android:exported="false" />-->
         <activity
-            android:name=".QRActivity"
+            android:name=".ARActivity"
             android:configChanges="orientation|screenSize"
             android:exported="true"
             android:screenOrientation="locked" />

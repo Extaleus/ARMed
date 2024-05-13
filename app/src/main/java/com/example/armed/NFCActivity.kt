@@ -33,6 +33,7 @@ class NFCActivity : AppCompatActivity() {
 
         bindingClass.btnExit.setOnClickListener { finish() }
 
+        // Диалоговое окно с надписью поднесите телефон к метке
         val builder = AlertDialog.Builder(this@NFCActivity, R.style.MyAlertDialogStyle)
         builder.setTitle(R.string.nfc_alert1)
         builder.setMessage(R.string.nfc_alert)
@@ -96,6 +97,7 @@ class NFCActivity : AppCompatActivity() {
 
             with(parcelables) {
                 try {
+                    // Получаем данные из сообщения
                     val inNdefMessage = this?.get(0) as NdefMessage
                     val inNdefRecords = inNdefMessage.records
                     val ndefRecord0 = inNdefRecords[0]
@@ -113,7 +115,9 @@ class NFCActivity : AppCompatActivity() {
     }
 
     private fun checkNFC() {
+        // Проверка поддержки NFC
         if (nfcAdapter == null) {
+            // Окно открывается, если устройство не поддерживает NFC
             val builder = AlertDialog.Builder(this@NFCActivity, R.style.MyAlertDialogStyle)
             builder.setTitle(R.string.nfc_not_sup_title)
             builder.setMessage(R.string.nfc_not_sup_desc)
@@ -122,8 +126,10 @@ class NFCActivity : AppCompatActivity() {
             myDialog.setCanceledOnTouchOutside(false)
             myDialog.show()
             bindingClass.tvMessage.text = getString(R.string.nfc_not_sup)
-
-        } else if (!nfcAdapter!!.isEnabled) {
+        }
+        // Проверка включения NFC
+        else if (!nfcAdapter!!.isEnabled) {
+            // Окно открывается, если NFC не включен
             val builder = AlertDialog.Builder(this@NFCActivity, R.style.MyAlertDialogStyle)
             builder.setTitle(R.string.nfc_turn_on_title)
             builder.setMessage(R.string.nfc_turn_on_desc)

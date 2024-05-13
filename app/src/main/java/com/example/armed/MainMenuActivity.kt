@@ -1,9 +1,9 @@
 package com.example.armed
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import com.example.armed.databinding.ActivityMainMenuBinding
 import com.example.armed.databinding.ActivityMainMenuBinding.inflate
 
@@ -17,7 +17,7 @@ class MainMenuActivity : AppCompatActivity() {
         setContentView(bindingClass.root)
 
         bindingClass.btnQR.setOnClickListener {
-            val intent = Intent(this, QRActivity::class.java)
+            val intent = Intent(this, ARActivity::class.java)
             startActivity(intent)
         }
 

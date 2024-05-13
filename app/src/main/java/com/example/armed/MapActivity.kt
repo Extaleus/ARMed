@@ -26,25 +26,27 @@ class MapActivity : AppCompatActivity() {
         scaleGestureDetector = ScaleGestureDetector(this, ScaleListener())
         gestureDetector = GestureDetector(this, MoveListener())
 
-        bindingClass.btnWard.setOnClickListener { onClickCabinet(R.string.ward) }
-        bindingClass.btnPediatrics.setOnClickListener { onClickCabinet(R.string.pediatrics) }
-        bindingClass.btnLabs.setOnClickListener { onClickCabinet(R.string.labs) }
-        bindingClass.btnObstetrics.setOnClickListener { onClickCabinet(R.string.obstetrics) }
-        bindingClass.btnOperating.setOnClickListener { onClickCabinet(R.string.operating) }
-        bindingClass.btnSurgical.setOnClickListener { onClickCabinet(R.string.surgical) }
-        bindingClass.btnOrthoped.setOnClickListener { onClickCabinet(R.string.orthopedInfo) }
-        bindingClass.btnWaitingRoom.setOnClickListener { onClickCabinet(R.string.waitingRoom) }
-        bindingClass.btnRadiology.setOnClickListener { onClickCabinet(R.string.radiology) }
-        bindingClass.btnIntensiveCare.setOnClickListener { onClickCabinet(R.string.intensiveCare) }
-        bindingClass.btnResus.setOnClickListener { onClickCabinet(R.string.resus) }
-        bindingClass.btnExamin.setOnClickListener { onClickCabinet(R.string.examine) }
-        bindingClass.btnAmbulanceTriage.setOnClickListener { onClickCabinet(R.string.AmbulanceTriage) }
-        bindingClass.btnWalking.setOnClickListener { onClickCabinet(R.string.AmbulanceTriage) }
+        // Обработчики нажатий на кабинеты
+        bindingClass.btnWard.setOnClickListener { onClickCabinet(R.string.ward, "Кабинет № 14") }
+        bindingClass.btnPediatrics.setOnClickListener { onClickCabinet(R.string.pediatrics, "Кабинет № 13") }
+        bindingClass.btnLabs.setOnClickListener { onClickCabinet(R.string.labs, "Кабинет № 8") }
+        bindingClass.btnObstetrics.setOnClickListener { onClickCabinet(R.string.obstetrics, "Кабинет № 12") }
+        bindingClass.btnOperating.setOnClickListener { onClickCabinet(R.string.operating, "Кабинет № 6") }
+        bindingClass.btnSurgical.setOnClickListener { onClickCabinet(R.string.surgical, "Кабинет № 1") }
+        bindingClass.btnOrthoped.setOnClickListener { onClickCabinet(R.string.orthopedInfo, "Кабинет № 2") }
+        bindingClass.btnWaitingRoom.setOnClickListener { onClickCabinet(R.string.waitingRoom, "Кабинет № 3") }
+        bindingClass.btnRadiology.setOnClickListener { onClickCabinet(R.string.radiology, "Кабинет № 11") }
+        bindingClass.btnIntensiveCare.setOnClickListener { onClickCabinet(R.string.intensiveCare, "Кабинет № 5") }
+        bindingClass.btnResus.setOnClickListener { onClickCabinet(R.string.resus, "Кабинет № 4") }
+        bindingClass.btnExamin.setOnClickListener { onClickCabinet(R.string.examine, "Кабинет № 9") }
+        bindingClass.btnAmbulanceTriage.setOnClickListener { onClickCabinet(R.string.AmbulanceTriage1, "Кабинет № 7") }
+        bindingClass.btnWalking.setOnClickListener { onClickCabinet(R.string.AmbulanceTriage, "Кабинет № 10") }
 
         bindingClass.btnExitCLInfo.setOnClickListener { bindingClass.clInfo.visibility = View.GONE }
         bindingClass.btnExit.setOnClickListener { finish() }
     }
 
+    // Обработчики событий касания
     override fun onTouchEvent(event: MotionEvent): Boolean {
         if (event.pointerCount > 1) {
             scaleGestureDetector.onTouchEvent(event)
@@ -54,6 +56,7 @@ class MapActivity : AppCompatActivity() {
         return super.onTouchEvent(event)
     }
 
+    // Обработчики событий масштабирования
     inner class ScaleListener : ScaleGestureDetector.SimpleOnScaleGestureListener() {
         override fun onScale(detector: ScaleGestureDetector): Boolean {
             factor *= detector.scaleFactor
@@ -64,6 +67,7 @@ class MapActivity : AppCompatActivity() {
         }
     }
 
+    // Обработчики событий перемещения
     inner class MoveListener : GestureDetector.SimpleOnGestureListener() {
         override fun onScroll(
             e1: MotionEvent?,
@@ -94,13 +98,14 @@ class MapActivity : AppCompatActivity() {
             if (newY >= -elementHeight * 3 / 4 && newY <= boundaryY) {
                 bindingClass.clMap.y = newY
             }
-
             return true
         }
     }
 
-    private fun onClickCabinet(newText: Int) {
+    // Обработчики нажатий на кабинеты
+    private fun onClickCabinet(newText: Int, newTitle: String) {
         bindingClass.clInfo.visibility = View.VISIBLE
+        bindingClass.tvInfoTitle.text = newTitle
         bindingClass.tvInfo.text = getString(newText)
     }
 }

@@ -1,7 +1,7 @@
 <resources>
-    <string name="app_name">ARMed</string>
-    <string name="qr">Скан QR кода</string>
-    <string name="map">Карта</string>
+    <string name="app_name">AR_Med</string>
+    <string name="qr">Раздел AR</string>
+    <string name="map">Раздел Карта</string>
     <string name="exit">Выход</string>
     <string name="menu">Меню</string>
     <string name="no">Нет</string>
@@ -9,6 +9,7 @@
     <string name="ok">OK</string>
 
     <string name="nfc">Скан NFC метки</string>
+    <string name="nfc_menu">Раздел NFC</string>
     <string name="nfc_turn_on_title">NFC выключено.</string>
     <string name="nfc_turn_on_desc">Пожалуйста включите NFC в настройках.</string>
     <string name="nfc_turn_on">NFC выключено.\nПожалуйста включите NFC в настройках.</string>
@@ -27,12 +28,13 @@
     <string name="ward">Палата</string>
     <string name="orthoped">Ортопед</string>
     <string name="orthopedInfo">Ортопед\nПН – ПТ: 8:00 – 17:00</string>
-    <string name="resus">Ресус</string>
+    <string name="resus">Невролог\n8:00 - 13:00</string>
     <string name="examine">Смотровой кабинет\nПН – ПТ: 8:00 – 00:00</string>
     <string name="surgical">Предоперационная</string>
     <string name="operating">Операционная</string>
     <string name="intensiveCare">Интенсивная терапия</string>
-    <string name="AmbulanceTriage">Приемный покой</string>
+    <string name="AmbulanceTriage">Кардиолог\nПН – ПТ: 8:00 – 16:00</string>
+    <string name="AmbulanceTriage1">Приёмный покой</string>
 
     <string name="exitQuestion">Вы действительно хотите выйти?</string>
 
